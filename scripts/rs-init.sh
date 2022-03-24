@@ -59,4 +59,12 @@ admin.createUser(
     roles: [ { role: "root", db: "admin" } ]
   }
 );
+napps = db.getSiblingDB("napps");
+napps.createUser(
+  {
+    user: process.env["MONGO_USERNAME"],
+    pwd: process.env["MONGO_PASSWORD"],
+    roles: [ { role: "dbAdmin", db: "napps" } ]
+  }
+);
 EOF
